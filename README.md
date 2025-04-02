@@ -2,7 +2,7 @@ Big - O
 Big-O Heist is a fast-paced educational game in which players need to identify the Big-O time complexity in algorithm snippets under time pressure.
 
 Developers
-Listowel Anim ()
+Listowel Anim (animlist@udel.edu)
 ZhihuaSun (sunzhi@udel.edu)
 Angel Asobo (aasobo@udel.edu)
 Junpuyin Wei()
