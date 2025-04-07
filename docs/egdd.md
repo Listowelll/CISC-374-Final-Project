@@ -144,10 +144,10 @@ Each algorithm snippet is introduced with subtle hints or familiar code patterns
 You are a digital rogue hacker breaking into data vaults. Your digital avatar must make quick decisions to defuse algorithmic locks. One wrong move—or taking too long—and everything explodes.
 
 ## Storyboarding
-![GameDesign](./assets/GameDesign.png)
+![GameDesign](docs/GameDesign.png)
 
 
-![StoryBoarding](./assets/StoryBoarding.jpg)
+![StoryBoarding](docs/StoryBoarding.jpg)
 
 
 # Assets Needed
