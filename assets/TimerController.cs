@@ -68,10 +68,17 @@ public class TimerController : MonoBehaviour
 
     public void PauseGame()
     {
+        Debug.Log("PauseGame called");
         Time.timeScale = 0;
         if (pausePanel != null)
         {
             pausePanel.SetActive(true);
+            pausePanel.transform.SetAsLastSibling(); 
+            Debug.Log("pausePanel activated and set as last sibling");
+        }
+        else
+        {
+            Debug.Log("pausePanel is null! Please assign pausePanel in the Inspector.");
         }
     }
 
