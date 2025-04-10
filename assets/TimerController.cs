@@ -30,14 +30,14 @@ public class TimerController : MonoBehaviour
             
             if (timerText != null)
             {
-                timerText.text = "remaining game time" + Mathf.Ceil(displayTime).ToString();
+                timerText.text = "remaining game time: " + Mathf.Ceil(displayTime).ToString();
             }
         }
         else
         {
             if (timerText != null)
             {
-                timerText.text = "remaining game time:0";
+                timerText.text = "remaining game time: 0";
             }
             
             if (failPanel != null && !failPanel.activeSelf)
