@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;  
 
 public class TimerController : MonoBehaviour
 {
     public float timeLeft = 60.0f;
-    
-    public Text timerText;
-    
-    public Text failText;
+    public TMP_Text timerText;
+    public TMP_Text failText;
 
     void Start()
     {
