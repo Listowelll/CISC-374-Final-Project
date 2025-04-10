@@ -30,14 +30,14 @@ public class TimerController : MonoBehaviour
             
             if (timerText != null)
             {
-                timerText.text = Mathf.Ceil(displayTime).ToString();
+                timerText.text = "remaining game time" + Mathf.Ceil(displayTime).ToString();
             }
         }
         else
         {
             if (timerText != null)
             {
-                timerText.text = "0";
+                timerText.text = "remaining game time:0";
             }
             
             if (failPanel != null && !failPanel.activeSelf)
@@ -48,6 +48,11 @@ public class TimerController : MonoBehaviour
             {
                 failText.gameObject.SetActive(true);
             }
+            if (failText != null && !failText.gameObject.activeSelf)
+            {
+                failText.gameObject.SetActive(true);
+                failText.transform.SetAsLastSibling();
+                }
         }
     }
 }
