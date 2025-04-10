@@ -40,19 +40,17 @@ public class TimerController : MonoBehaviour
                 timerText.text = "remaining game time: 0";
             }
             
-            if (failPanel != null && !failPanel.activeSelf)
+            if (failPanel != null)
             {
                 failPanel.SetActive(true);
             }
-            if (failText != null && !failText.gameObject.activeSelf)
+            
+            if (failText != null)
             {
                 failText.gameObject.SetActive(true);
-            }
-            if (failText != null && !failText.gameObject.activeSelf)
-            {
-                failText.gameObject.SetActive(true);
+                failText.text = "You failed, try again.";
                 failText.transform.SetAsLastSibling();
-                }
+            }
         }
     }
 }
