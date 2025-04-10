@@ -7,7 +7,8 @@ public class TimerController : MonoBehaviour
     public float timeLeft = 60.0f;
     public TMP_Text timerText;
     public TMP_Text failText;
-    public GameObject failPanel; 
+    public GameObject failPanel;
+    public GameObject pausePanel;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class TimerController : MonoBehaviour
         if (failPanel != null)
         {
             failPanel.SetActive(false);
+        }
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
         }
     }
 
@@ -57,6 +62,25 @@ public class TimerController : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
     }
 }
