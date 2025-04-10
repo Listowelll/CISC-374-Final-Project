@@ -9,6 +9,7 @@ public class TimerController : MonoBehaviour
     public TMP_Text failText;
     public GameObject failPanel;
     public GameObject pausePanel;
+    public GameObject stopButton; 
 
     void Start()
     {
@@ -23,6 +24,11 @@ public class TimerController : MonoBehaviour
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);
+        }
+        // 确保游戏开始时 STOP 按钮显示
+        if (stopButton != null)
+        {
+            stopButton.SetActive(true);
         }
     }
 
@@ -56,6 +62,11 @@ public class TimerController : MonoBehaviour
                 failText.gameObject.SetActive(true);
                 failText.text = "You failed, try again.";
                 failText.transform.SetAsLastSibling();
+            }
+            
+            if (stopButton != null)
+            {
+                stopButton.SetActive(false);
             }
         }
     }
