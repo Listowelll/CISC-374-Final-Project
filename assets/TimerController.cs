@@ -1,17 +1,22 @@
 using UnityEngine;
-using TMPro;  
+using TMPro;
 
 public class TimerController : MonoBehaviour
 {
     public float timeLeft = 60.0f;
     public TMP_Text timerText;
     public TMP_Text failText;
+    public GameObject failPanel; 
 
     void Start()
     {
         if (failText != null)
         {
             failText.gameObject.SetActive(false);
+        }
+        if (failPanel != null)
+        {
+            failPanel.SetActive(false);
         }
     }
 
@@ -35,6 +40,10 @@ public class TimerController : MonoBehaviour
                 timerText.text = "0";
             }
             
+            if (failPanel != null && !failPanel.activeSelf)
+            {
+                failPanel.SetActive(true);
+            }
             if (failText != null && !failText.gameObject.activeSelf)
             {
                 failText.gameObject.SetActive(true);
