@@ -1232,17 +1232,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603220701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 13.654765}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 840758173}
-  m_Father: {fileID: 1174965006}
+  m_Father: {fileID: 1813435673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 115.85333, y: 74.560394}
+  m_SizeDelta: {x: 799.99994, y: 449.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603220703
 MonoBehaviour:
@@ -2545,7 +2545,6 @@ RectTransform:
   m_Children:
   - {fileID: 1813435673}
   - {fileID: 800967757}
-  - {fileID: 603220702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2989,7 +2988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9ab86ff83e34f778026e69846db0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 15
+  timeLeft: 2
   timerText: {fileID: 1375794412}
   failText: {fileID: 86235797}
   failPanel: {fileID: 1876997786}
@@ -3046,6 +3045,7 @@ Transform:
   - {fileID: 2005542710}
   - {fileID: 947961924}
   - {fileID: 1063176757}
+  - {fileID: 603220702}
   m_Father: {fileID: 1174965006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839607642

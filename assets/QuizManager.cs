@@ -28,6 +28,7 @@ public class QuizController : MonoBehaviour
 
     void Start()
     {
+        
         if (failPanel != null)
         {
             failPanel.SetActive(false);
@@ -128,6 +129,11 @@ public class QuizController : MonoBehaviour
                 if (failPanel != null)
                 {
                     failPanel.SetActive(true);
+                    TMP_Text[] texts = failPanel.GetComponentsInChildren<TMP_Text>(true);
+                    foreach(var t in texts)
+                    {
+                        t.gameObject.SetActive(true);
+                    }
                 }
                 if (stopButton != null)
                 {
