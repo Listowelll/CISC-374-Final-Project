@@ -72,11 +72,6 @@ public class QuizController : MonoBehaviour
             if (completePanel != null)
             {
                 completePanel.SetActive(true);
-                TMP_Text completeTextComponent = completePanel.GetComponentInChildren<TMP_Text>();
-                if (completeTextComponent != null)
-                {
-                    completeTextComponent.text = "Congratulations, you've completed the level!";
-                }
             }
             if (stopButton != null)
             {
@@ -111,11 +106,6 @@ public class QuizController : MonoBehaviour
                     if (completePanel != null)
                     {
                         completePanel.SetActive(true);
-                        TMP_Text completeTextComponent = completePanel.GetComponentInChildren<TMP_Text>();
-                        if (completeTextComponent != null)
-                        {
-                            completeTextComponent.text = "Congratulations, you've completed the level!";
-                        }
                     }
                     if (stopButton != null)
                     {
@@ -138,11 +128,6 @@ public class QuizController : MonoBehaviour
                 if (failPanel != null)
                 {
                     failPanel.SetActive(true);
-                    TMP_Text failTextComponent = failPanel.GetComponentInChildren<TMP_Text>();
-                    if (failTextComponent != null)
-                    {
-                        failTextComponent.text = "You failed, try again.";
-                    }
                 }
                 if (stopButton != null)
                 {
