@@ -21,6 +21,7 @@ public class QuizController : MonoBehaviour
     public Button[] optionButtons;          
     public GameObject quizPanel;            
     public GameObject failPanel;      
+    public GameObject completePanel; 
 
     private int currentQuestionIndex = 0;
 
@@ -30,11 +31,16 @@ public class QuizController : MonoBehaviour
         {
             failPanel.SetActive(false);
         }
+        if (completePanel != null)
+        {
+            completePanel.SetActive(false);
+        }
         if (questions.Length > 0)
         {
             ShowQuestion();
         }
     }
+    
     void ShowQuestion()
     {
         if (currentQuestionIndex < questions.Length)
@@ -50,7 +56,14 @@ public class QuizController : MonoBehaviour
         else
         {
             Debug.Log("Quiz completed successfully!");
-            
+            if (quizPanel != null)
+            {
+                quizPanel.SetActive(false);
+            }
+            if (completePanel != null)
+            {
+                completePanel.SetActive(true);
+            }
         }
     }
 
