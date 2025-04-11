@@ -22,6 +22,7 @@ public class QuizController : MonoBehaviour
     public GameObject quizPanel;            
     public GameObject failPanel;      
     public GameObject completePanel; 
+    public GameObject stopButton;
 
     private int currentQuestionIndex = 0;
 
@@ -34,6 +35,9 @@ public class QuizController : MonoBehaviour
         if (completePanel != null)
         {
             completePanel.SetActive(false);
+        }
+        if (stopButton != null) {
+            stopButton.SetActive(true);
         }
         if (questions.Length > 0)
         {
@@ -64,6 +68,10 @@ public class QuizController : MonoBehaviour
             {
                 completePanel.SetActive(true);
             }
+            if (stopButton != null)
+            {
+                stopButton.SetActive(false);
+            }
         }
     }
 
@@ -84,6 +92,10 @@ public class QuizController : MonoBehaviour
                 if (failPanel != null)
                 {
                     failPanel.SetActive(true);
+                }
+                if (stopButton != null)
+                {
+                    stopButton.SetActive(false);
                 }
             }
         }
