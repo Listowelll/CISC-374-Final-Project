@@ -36,7 +36,8 @@ public class QuizController : MonoBehaviour
         {
             completePanel.SetActive(false);
         }
-        if (stopButton != null) {
+        if (stopButton != null)
+        {
             stopButton.SetActive(true);
         }
         if (questions.Length > 0)
@@ -54,12 +55,16 @@ public class QuizController : MonoBehaviour
             for (int i = 0; i < optionButtons.Length; i++)
             {
                 TMP_Text btnText = optionButtons[i].GetComponentInChildren<TMP_Text>();
-                btnText.text = q.options[i];
+                if (btnText != null && i < q.options.Length)
+                {
+                    btnText.text = q.options[i];
+                }
             }
         }
         else
         {
             Debug.Log("Quiz completed successfully!");
+            Time.timeScale = 0; 
             if (quizPanel != null)
             {
                 quizPanel.SetActive(false);
@@ -67,6 +72,11 @@ public class QuizController : MonoBehaviour
             if (completePanel != null)
             {
                 completePanel.SetActive(true);
+                TMP_Text completeTextComponent = completePanel.GetComponentInChildren<TMP_Text>();
+                if (completeTextComponent != null)
+                {
+                    completeTextComponent.text = "Congratulations, you've completed the level!";
+                }
             }
             if (stopButton != null)
             {
@@ -77,6 +87,11 @@ public class QuizController : MonoBehaviour
 
     public void OnOptionSelected(int optionIndex)
     {
+        foreach (var btn in optionButtons)
+        {
+            btn.interactable = false;
+        }
+
         if (currentQuestionIndex < questions.Length)
         {
             Question q = questions[currentQuestionIndex];
@@ -84,14 +99,50 @@ public class QuizController : MonoBehaviour
             {
                 Debug.Log("Correct answer!");
                 currentQuestionIndex++;
-                ShowQuestion();
+
+                if (currentQuestionIndex >= questions.Length)
+                {
+                    Debug.Log("Quiz completed successfully!");
+                    Time.timeScale = 0; 
+                    if (quizPanel != null)
+                    {
+                        quizPanel.SetActive(false);
+                    }
+                    if (completePanel != null)
+                    {
+                        completePanel.SetActive(true);
+                        TMP_Text completeTextComponent = completePanel.GetComponentInChildren<TMP_Text>();
+                        if (completeTextComponent != null)
+                        {
+                            completeTextComponent.text = "Congratulations, you've completed the level!";
+                        }
+                    }
+                    if (stopButton != null)
+                    {
+                        stopButton.SetActive(false);
+                    }
+                }
+                else
+                {
+                    ShowQuestion();
+                    foreach (var btn in optionButtons)
+                    {
+                        btn.interactable = true;
+                    }
+                }
             }
             else
             {
                 Debug.Log("Wrong answer!");
+                Time.timeScale = 0; 
                 if (failPanel != null)
                 {
                     failPanel.SetActive(true);
+                    TMP_Text failTextComponent = failPanel.GetComponentInChildren<TMP_Text>();
+                    if (failTextComponent != null)
+                    {
+                        failTextComponent.text = "You failed, try again.";
+                    }
                 }
                 if (stopButton != null)
                 {
