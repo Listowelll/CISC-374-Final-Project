@@ -74,4 +74,30 @@ public class QuizController : MonoBehaviour
             }
         }
     }
+
+    public void OnOptionSelected(int optionIndex)
+    {
+        if (currentQuestionIndex < questions.Length)
+        {
+            Question q = questions[currentQuestionIndex];
+            if (optionIndex == q.correctOptionIndex)
+            {
+                Debug.Log("Correct answer!");
+                currentQuestionIndex++;
+                ShowQuestion();
+            }
+            else
+            {
+                Debug.Log("Wrong answer!");
+                if (failPanel != null)
+                {
+                    failPanel.SetActive(true);
+                }
+                if (stopButton != null)
+                {
+                    stopButton.SetActive(false);
+                }
+            }
+        }
+    }
 }
