@@ -2989,7 +2989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9ab86ff83e34f778026e69846db0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 3
+  timeLeft: 60
   timerText: {fileID: 1375794412}
   failText: {fileID: 86235797}
   failPanel: {fileID: 1876997786}
