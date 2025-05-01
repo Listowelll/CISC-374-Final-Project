@@ -11,7 +11,10 @@ public class QuizController : MonoBehaviour
         public string questionText;         
         public string[] options = new string[4];  
         public int correctOptionIndex;        
-    }  
+    } 
+
+    public AudioManager audioManager;
+    public VisualEffects visualEffects;
 
     [Header("Score System")]
     public TMP_Text scoreText;
@@ -111,6 +114,17 @@ public class QuizController : MonoBehaviour
         {
             Debug.Log("Correct answer!");
             
+            // Play correct answer effects
+            if (audioManager != null)
+            {
+                audioManager.PlayCorrectSound();
+            }
+            
+            if (visualEffects != null)
+            {
+                visualEffects.PlayCorrectEffect();
+            }
+
             // Add score and update UI
             currentScore += scorePerCorrectAnswer;
             UpdateScoreAndProgressUI();
@@ -120,6 +134,13 @@ public class QuizController : MonoBehaviour
             if (currentQuestionIndex >= questions.Length)
             {
                 Debug.Log("Quiz completed successfully!");
+                    
+    // Play completion sound
+            if (audioManager != null)
+            {
+            audioManager.PlayGameCompletedSound();
+            }
+    
                 Time.timeScale = 0; 
                 if (quizPanel != null)
                 {
@@ -156,6 +177,18 @@ public class QuizController : MonoBehaviour
         else
         {
             Debug.Log("Wrong answer!");
+
+              // Play wrong answer effects
+            if (audioManager != null)
+            {
+                audioManager.PlayWrongSound();
+            }
+            
+            if (visualEffects != null)
+            {
+                visualEffects.PlayWrongEffect();
+            }
+
             Time.timeScale = 0; 
             if (failPanel != null)
             {
