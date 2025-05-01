@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-    public float timeLeft = 60.0f;
+    public float timeLeft = 30.0f;
     public TMP_Text timerText;
     public TMP_Text failText;
     public GameObject failPanel;
@@ -25,7 +25,7 @@ public class TimerController : MonoBehaviour
         {
             pausePanel.SetActive(false);
         }
-        // 确保游戏开始时 STOP 按钮显示
+       
         if (stopButton != null)
         {
             stopButton.SetActive(true);
@@ -101,4 +101,9 @@ public class TimerController : MonoBehaviour
             pausePanel.SetActive(false);
         }
     }
+
+    public void ResetTimer()
+{
+    timeLeft = 30.0f; // Reset to the default time
+}
 }
