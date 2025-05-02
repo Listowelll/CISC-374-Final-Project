@@ -11,7 +11,16 @@ public class QuizController : MonoBehaviour
         public string questionText;         
         public string[] options = new string[4];  
         public int correctOptionIndex;        
-    }
+    } 
+
+    public AudioManager audioManager;
+    public VisualEffects visualEffects;
+
+    [Header("Score System")]
+    public TMP_Text scoreText;
+    public TMP_Text progressText;
+    private int currentScore = 0;
+    private int scorePerCorrectAnswer = 100;
 
     [Header("Quiz Data")]
     public Question[] questions;       
@@ -25,6 +34,8 @@ public class QuizController : MonoBehaviour
     public GameObject stopButton;
 
     private int currentQuestionIndex = 0;
+
+    public TimerController timerController;
 
     void Start()
     {
@@ -45,23 +56,31 @@ public class QuizController : MonoBehaviour
         {
             ShowQuestion();
         }
+        UpdateScoreAndProgressUI();
     }
     
     void ShowQuestion()
     {
-        if (currentQuestionIndex < questions.Length)
+        
+    if (currentQuestionIndex < questions.Length)
+    {
+        // Reset timer for the new question
+        if (timerController != null)
         {
-            Question q = questions[currentQuestionIndex];
-            questionTextUI.text = q.questionText;
-            for (int i = 0; i < optionButtons.Length; i++)
+            timerController.ResetTimer();
+        }
+        
+        Question q = questions[currentQuestionIndex];
+        questionTextUI.text = q.questionText;
+        for (int i = 0; i < optionButtons.Length; i++)
+        {
+            TMP_Text btnText = optionButtons[i].GetComponentInChildren<TMP_Text>();
+            if (btnText != null && i < q.options.Length)
             {
-                TMP_Text btnText = optionButtons[i].GetComponentInChildren<TMP_Text>();
-                if (btnText != null && i < q.options.Length)
-                {
-                    btnText.text = q.options[i];
-                }
+                btnText.text = q.options[i];
             }
         }
+    }
         else
         {
             Debug.Log("Quiz completed successfully!");
@@ -82,57 +101,63 @@ public class QuizController : MonoBehaviour
     }
 
     public void OnOptionSelected(int optionIndex)
+{
+    foreach (var btn in optionButtons)
     {
-        foreach (var btn in optionButtons)
-        {
-            btn.interactable = false;
-        }
+        btn.interactable = false;
+    }
 
-        if (currentQuestionIndex < questions.Length)
+    if (currentQuestionIndex < questions.Length)
+    {
+        Question q = questions[currentQuestionIndex];
+        if (optionIndex == q.correctOptionIndex)
         {
-            Question q = questions[currentQuestionIndex];
-            if (optionIndex == q.correctOptionIndex)
+            Debug.Log("Correct answer!");
+            
+            // Play correct answer effects
+            if (audioManager != null)
             {
-                Debug.Log("Correct answer!");
-                currentQuestionIndex++;
-
-                if (currentQuestionIndex >= questions.Length)
-                {
-                    Debug.Log("Quiz completed successfully!");
-                    Time.timeScale = 0; 
-                    if (quizPanel != null)
-                    {
-                        quizPanel.SetActive(false);
-                    }
-                    if (completePanel != null)
-                    {
-                        completePanel.SetActive(true);
-                    }
-                    if (stopButton != null)
-                    {
-                        stopButton.SetActive(false);
-                    }
-                }
-                else
-                {
-                    ShowQuestion();
-                    foreach (var btn in optionButtons)
-                    {
-                        btn.interactable = true;
-                    }
-                }
+                audioManager.PlayCorrectSound();
             }
-            else
+            
+            if (visualEffects != null)
             {
-                Debug.Log("Wrong answer!");
+                visualEffects.PlayCorrectEffect();
+            }
+
+            // Add score and update UI
+            currentScore += scorePerCorrectAnswer;
+            UpdateScoreAndProgressUI();
+            
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex >= questions.Length)
+            {
+                Debug.Log("Quiz completed successfully!");
+                    
+    // Play completion sound
+            if (audioManager != null)
+            {
+            audioManager.PlayGameCompletedSound();
+            }
+    
                 Time.timeScale = 0; 
-                if (failPanel != null)
+                if (quizPanel != null)
                 {
-                    failPanel.SetActive(true);
-                    TMP_Text[] texts = failPanel.GetComponentsInChildren<TMP_Text>(true);
-                    foreach(var t in texts)
+                    quizPanel.SetActive(false);
+                }
+                if (completePanel != null)
+                {
+                    completePanel.SetActive(true);
+                    
+                    // Display final score on complete panel
+                    TMP_Text[] completeTexts = completePanel.GetComponentsInChildren<TMP_Text>(true);
+                    foreach(var t in completeTexts)
                     {
-                        t.gameObject.SetActive(true);
+                        if (t.name == "FinalScoreText")
+                        {
+                            t.text = "Final Score: " + currentScore;
+                        }
                     }
                 }
                 if (stopButton != null)
@@ -140,6 +165,63 @@ public class QuizController : MonoBehaviour
                     stopButton.SetActive(false);
                 }
             }
+            else
+            {
+                ShowQuestion();
+                foreach (var btn in optionButtons)
+                {
+                    btn.interactable = true;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Wrong answer!");
+
+              // Play wrong answer effects
+            if (audioManager != null)
+            {
+                audioManager.PlayWrongSound();
+            }
+            
+            if (visualEffects != null)
+            {
+                visualEffects.PlayWrongEffect();
+            }
+
+            Time.timeScale = 0; 
+            if (failPanel != null)
+            {
+                failPanel.SetActive(true);
+                TMP_Text[] texts = failPanel.GetComponentsInChildren<TMP_Text>(true);
+                foreach(var t in texts)
+                {
+                    t.gameObject.SetActive(true);
+                    if (t.name == "FinalScoreText")
+                    {
+                        t.text = "Your Score: " + currentScore;
+                    }
+                }
+            }
+            if (stopButton != null)
+            {
+                stopButton.SetActive(false);
+            }
         }
     }
+}
+
+// Add this method to the QuizController class
+    private void UpdateScoreAndProgressUI()
+{
+    if (scoreText != null)
+    {
+        scoreText.text = "Score: " + currentScore;
+    }
+    
+    if (progressText != null)
+    {
+        progressText.text = "Question " + (currentQuestionIndex + 1);
+    }
+}
 }

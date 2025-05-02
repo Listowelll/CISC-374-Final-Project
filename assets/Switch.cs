@@ -18,7 +18,7 @@ public class Switch : MonoBehaviour
     {
         Debug.Log("Loading game scene...");
         // Logic to handle the switch being activated
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Main Scene");
         // Console.WriteLine("Switch activated! Loading MainScene...");
     }
 }

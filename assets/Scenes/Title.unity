@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: -166}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 5.1354, y: -206.3891}
+  m_SizeDelta: {x: 140.7781, y: 54.0532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &13098842
 MonoBehaviour:
@@ -636,10 +636,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 81
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 248
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -690,8 +690,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.88757324, y: -0.88757324}
-  m_SizeDelta: {x: 1200, y: 400}
+  m_AnchoredPosition: {x: -0.1469, y: 103.54}
+  m_SizeDelta: {x: 1049.9363, y: 207.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1322604513
 MonoBehaviour:
@@ -715,7 +715,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Welcome Big-o Game
+  m_Text: Welcome To Big-O Heist
 --- !u!222 &1322604514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -769,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: -78}
+  m_AnchoredPosition: {x: 158, y: -69}
   m_SizeDelta: {x: 660.1479, y: 66.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054340954
@@ -794,10 +794,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 47
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 214
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tip: Hit "Play" to play the Game'
+  m_Text: Hit "Play" To Begin
 --- !u!222 &2054340955
 CanvasRenderer:
   m_ObjectHideFlags: 0
