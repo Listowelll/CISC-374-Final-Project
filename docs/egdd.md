@@ -182,6 +182,3 @@ Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and ad
 
   * Responsive touch-friendly UI
   * Adaptive layouts for various aspect ratios
-
-```
-```
