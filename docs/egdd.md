@@ -101,34 +101,46 @@ new QuestionData {
 
 Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and advanced topics.
 
+---
+
 ## 9. Interaction Flow
 
-1. **Press START** → Hide start screen, show HUD.  
+1. **Press START**  
+   - Hide the start screen  
+   - Show the in‑game HUD  
+
 2. **New Question**  
-   - Close the chest  
-   - Reset timer to 20 s  
+   - Close the chest (swap to closed sprite)  
+   - Reset timer to 20 seconds  
+   - Display question text and four answer buttons  
+
 3. **Player Answers**  
    - **Correct**  
-     - Play “ding” SFX  
-     - Open chest sprite  
-     - Wait 1 s, then call next question (or next level)  
+     1. Play “ding” SFX  
+     2. Open the chest (swap to open sprite)  
+     3. Wait 1 second, then load the next question or advance level  
    - **Wrong** or **Timeout**  
-     - Play “buzz” SFX  
-     - Display Failure Panel with explanation text  
-4. **RESTART** → Reload scene back to Start Screen  
-5. **After Level 3 Completed** → Show Victory Panel, play victory fanfare
+     1. Play “buzz” SFX  
+     2. Show Failure Panel overlay with explanation text  
+
+4. **RESTART** (on Failure or Victory Panel)  
+   - Reload the scene back to the Start Screen  
+
+5. **After Level 3 Completion**  
+   - Show Victory Panel  
+   - Play victory fanfare SFX  
 
 ---
 
 ## 10. Art & Audio Assets
 
-| Asset Type      | File Names                                          | Path                  |
-|-----------------|-----------------------------------------------------|-----------------------|
-| **Backgrounds** | `BG_Level1.png`, `BG_Level2.png`, `BG_Level3.png`    | `Assets/Sprites/`     |
-| **Chests**      | `chest_closed.png`, `chest_open.png`                | `Assets/Sprites/`     |
-| **Panels**      | `Start_BG.png`, `Fail_BG.png`, `Victory_BG.png`      | `Assets/Sprites/`     |
-| **Music (BGM)** | `bgm_loop.mp3`                                      | `Assets/Audio/`       |
-| **SFX**         | `sfx_click.wav`, `sfx_correct.wav`,<br>`sfx_wrong.wav`, `sfx_victory.wav` | `Assets/Audio/` |
+| Asset Type           | Filename(s)                                                         | Folder Path           |
+|----------------------|---------------------------------------------------------------------|-----------------------|
+| **Backgrounds**      | `BG_Level1.png`, `BG_Level2.png`, `BG_Level3.png`                   | `Assets/Sprites/`     |
+| **Treasure Chests**  | `chest_closed.png`, `chest_open.png`                                | `Assets/Sprites/`     |
+| **UI Panels**        | `Start_BG.png`, `Fail_BG.png`, `Victory_BG.png`                     | `Assets/Sprites/`     |
+| **Music (BGM)**      | `bgm_loop.mp3`                                                      | `Assets/Audio/`       |
+| **Sound Effects**    | `sfx_click.wav`, `sfx_correct.wav`, `sfx_wrong.wav`, `sfx_victory.wav` | `Assets/Audio/`   |
 
 ---
 
@@ -136,10 +148,16 @@ Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and ad
 
 - **Practice Mode**  
   - Unlimited time per question  
-  - No failure overlays  
+  - No failure (informational feedback only)  
+
 - **Leaderboard**  
-  - Track and display top players by accuracy & speed  
+  - Track top players by speed and accuracy  
+  - Support daily, weekly, and all‑time rankings  
+
 - **Multiplayer Race**  
   - Real‑time head‑to‑head Big‑O challenges  
+  - First correct answer wins the round  
+
 - **Mobile Support**  
-  - Touch‑friendly UI & responsive layout  
+  - Responsive touch‑friendly UI  
+  - Adaptive layouts for various aspect ratios  
