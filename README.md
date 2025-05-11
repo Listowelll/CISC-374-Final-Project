@@ -61,5 +61,5 @@ Find the full EGDD here: [docs/egdd.md](docs/egdd.md)
 
 ## **Links**
 
-* **Deployed Game**: [[[https://zhihuasun1.github.io/finalgame/](https://listowelll.github.io/CISC-374-Final-Project/)]
+* **Deployed Game**: [[(https://listowelll.github.io/CISC-374-Final-Project/)](https://listowelll.github.io/CISC-374-Final-Project/)]
 * **Final Presentation**: [)
