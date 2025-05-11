@@ -101,7 +101,7 @@ new QuestionData {
 
 Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and advanced topics.
 
-### 9. Interaction Flow
+## 9. Interaction Flow
 
 1. **Press START** → Hide start screen, show HUD.  
 2. **New Question**  
@@ -120,7 +120,7 @@ Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and ad
 
 ---
 
-### 10. Art & Audio Assets
+## 10. Art & Audio Assets
 
 | Asset Type      | File Names                                          | Path                  |
 |-----------------|-----------------------------------------------------|-----------------------|
@@ -132,7 +132,7 @@ Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and ad
 
 ---
 
-### 11. Future Extensions
+## 11. Future Extensions
 
 - **Practice Mode**  
   - Unlimited time per question  
