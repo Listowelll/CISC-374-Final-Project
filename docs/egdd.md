@@ -66,7 +66,7 @@
 3. **Failure Panel (Overlay)**  
    - Semi‑transparent dark background  
    - Title: **TREASURE HUNT FAILED**  
-   - Explanation text (white, readable)  
+   - Explanation text (RED, readable)  
    - **RESTART** button  
 
 4. **Victory Panel**  
