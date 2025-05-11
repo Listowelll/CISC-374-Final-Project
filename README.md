@@ -33,7 +33,26 @@ Big‑O Heist is an exciting, fast‑paced educational adventure that transforms
 
 ## **Screenshots**
 
+<img src="docs/start.jpg" alt="Start Screen" width="320" />  
+*Start Screen: “WISE PIRATE – USE YOUR WEAPON: BIG‑O” with START button.*
 
+<img src="docs/level1.jpg" alt="Level 1: Tropical Island" width="320" />  
+*Level 1 gameplay with chest and timer.*
+
+<img src="docs/level2.jpg" alt="Level 2: Jungle Ruins" width="320" />  
+*Level 2 gameplay showing increasing difficulty.*
+
+<img src="docs/level3.jpg" alt="Level 3: Cyber Cave" width="320" />  
+*Level 3 final questions in the cyber cave.*
+
+<img src="docs/fail.jpg" alt="Failure Panel" width="320" />  
+*Failure Panel overlay with explanation text.*
+
+<img src="docs/good.jpg" alt="Correct Answer Feedback" width="320" />  
+*Feedback when answering correctly (chest opens).*
+
+<img src="docs/stop.jpg" alt="Pause Panel" width="320" />  
+*Pause panel with Resume/Restart buttons.*
 Pass Answers 13132, 12114, 22131
 ---
 
