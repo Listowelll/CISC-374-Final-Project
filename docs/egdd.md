@@ -1,181 +1,145 @@
-# Big-O Heist
+# Big‑O Heist — Educational Game Design Document (EGDD) v1.2
 
-## Elevator Pitch
+## 1. Elevator Pitch  
+**Big‑O Heist** is a fast‑paced educational game in which players identify the Big‑O time complexity of algorithm snippets under intense time pressure—complete with an animated hacker avatar and a ticking bomb ready to explode if they hesitate too long.
 
-*Big-O Heist* is a fast-paced educational game where players identify the Big-O time complexity of algorithm snippets under intense time pressure—with a digital avatar reacting to their choices and a ticking bomb ready to explode if they take too long.
+---
 
-## Influences (Brief)
+## 2. Core Gameplay Mechanics
 
-- **Influence #1**:
-  - Medium: Video Game (Overcooked)
-  - Explanation: The fast-paced, cooperative tension of Overcooked inspired the game's sense of urgency and challenge-based learning.
+1. **Level Structure**  
+   - **3 Levels**, each with **5 questions**. Background and treasure chest style change per level.  
+   - Correct answers open the chest and play a success sound; wrong answers or time‑outs trigger a failure panel with an explanation.  
 
-- **Influence #2**:
-  - Medium: Movie (Ocean’s Eleven)
-  - Explanation: The strategic heist aesthetic and smooth execution align with the theme of codebreaking under pressure.
+2. **Time Pressure**  
+   - **20 seconds per question** (configurable). A visible countdown and bomb shake build urgency.  
+   - **Pause/Resume** button halts both timer and animations.  
 
-- **Influence #3**:
-  - Medium: Television (Mr. Robot)
-  - Explanation: The cyberpunk setting and hacker narrative reflect the tech-centric, algorithm-focused gameplay.
+3. **Instant Feedback**  
+   - **Correct** → Chest opens, “ding” SFX, 1 second delay, next question.  
+   - **Wrong/Time‑out** → “buzz” SFX, failure panel overlays with textual explanation.  
 
-## Core Gameplay Mechanics (Brief)
+4. **Audio**  
+   - **BGM** looped background music.  
+   - **SFX**: click, correct ding, wrong buzz, victory fanfare.
 
-- Timed algorithm identification
-- Animated avatar reactions
-- Bomb countdown pressure mechanic
-- Multiple choice interface with immediate feedback
+---
 
-# Learning Aspects
+## 3. Learning Objectives
 
-## Learning Domains
+- **Classify Complexity**: Accurately identify O(1), O(log n), O(n), O(n log n) from code examples.  
+- **Decide Under Pressure**: Make fast algorithmic judgments with a ticking clock.  
+- **Reinforce with Explanation**: Immediate, meaningful feedback on wrong answers deepens understanding.
 
-- Computer Science: Algorithm analysis, time complexity
-- Logical Reasoning: Pattern recognition and decision making
-- Coding Interviews: Quick algorithm classification
+---
 
-## Target Audiences
+## 4. Target Audience & Context
 
-- High school CS students
-- Undergraduate CS students
-- Coding bootcamp learners
-- Interview prep enthusiasts
+- **Who**: High‑school CS students, undergraduates, coding‑bootcamp learners, interview‑prep candidates.  
+- **Where**: CS classrooms, coding clubs, online learning platforms, interview practice sessions.
 
-## Target Contexts
+---
 
-- CS classrooms and labs
-- K-12 computer clubs
-- Online independent learning platforms
-- Interview preparation sessions
+## 5. Level & Scene Design
 
-## Learning Objectives
+| Level   | Background Scene            | Chest Style   | Focus                                  |
+|---------|-----------------------------|---------------|----------------------------------------|
+| **1**   | Tropical Island at Dawn     | Wooden Chest  | O(1) & O(n) (constant & linear)       |
+| **2**   | Jungle Ruins                | Metal Chest   | O(log n) & divide‑and‑conquer          |
+| **3**   | Cyber Cave                  | Futuristic Chest | Sorting & advanced structures       |
+| **Victory** | Starry Night Shore     | Golden Chest  | Full completion reward screen         |
 
-- **Classify Complexity**: Learners will identify Big-O time complexity from algorithm snippets.
-- **Decide Under Pressure**: Learners will make fast and accurate decisions under time constraints.
-- **Recognize Code Patterns**: Learners will connect visual code patterns with their runtime behavior.
+---
 
-## Prerequisite Knowledge
+## 6. User Interface Layout
 
-- Understand for-loops, nested loops, and recursion
-- Know basic algorithms like linear search, binary search, bubble sort, merge sort
+1. **Start Screen**  
+   - Title: **WISE PIRATE – USE YOUR WEAPON: BIG‑O**  
+   - **START** button  
 
-## Assessment Measures
+2. **HUD (In‑game)**  
+   - **Top‑left**: Pause/Resume button  
+   - **Top‑right**: Countdown timer (numeric + progress bar)  
+   - **Center**: Question text + 4 answer buttons  
+   - **Bottom**: Treasure chest image  
 
-- Pre-/Post-tests with multiple choice questions
-- Timed in-game scoring and accuracy tracking
-- Example questions:
-  - "What is the Big-O of binary search?"
-  - "Classify the following nested loop structure."
+3. **Failure Panel (Overlay)**  
+   - Semi‑transparent dark background  
+   - Title: **TREASURE HUNT FAILED**  
+   - Explanation text (white, readable)  
+   - **RESTART** button  
 
-# What sets this project apart?
+4. **Victory Panel**  
+   - Title: **YOU FOUND THE TREASURE!**  
+   - Victory animation + **RESTART** button  
 
-- Uses visual urgency (avatar, bomb) to simulate coding pressure
-- Immediate, meaningful feedback on correctness
-- Combines education with game immersion
-- Modular and replayable for lasting learning
+---
 
-# Player Interaction Patterns and Modes
+## 7. Key Systems & Scripts
 
-## Player Interaction Pattern
+| Component         | Script                  | Responsibility                                        |
+|-------------------|-------------------------|-------------------------------------------------------|
+| **Game Flow**     | `GameManager.cs`        | Level progression, question loading, chest control    |
+| **UI Rendering**  | `UIManager.cs`          | Display question/options, highlight answer result     |
+| **Timer**         | `TimerController.cs`    | Countdown logic, pause/resume, timeout detection      |
+| **Failure Panel** | `FailPanel.cs`          | Show explanation, handle restart/close                |
+| **Chest UI**      | `SimpleChestUI.cs`      | Swap chest sprites (closed/open)                      |
+| **Audio**         | `AudioManager.cs`       | Play BGM, SFX (correct, wrong, victory)               |
+| **Data Model**    | `QuestionData.cs`       | Holds question text, options, correct index, explanation |
 
-Single-player interaction with game UI: choosing between 3 algorithm options, watching avatar and bomb feedback.
+---
 
-## Player Modes
+## 8. Sample Question Data
 
-- **Main Game (Heist Mode)**: 60-second rounds to identify Big-O complexities, with bomb threat and animated avatar reactions.
-- **Practice Mode**: Unlimited time mode for exploration and learning.
+```csharp
+new QuestionData {
+  question     = "What is the Big‑O of linear search?",
+  options      = new[] { "O(1)", "O(log n)", "O(n)", "O(n log n)" },
+  correctIndex = 2,
+  explanation  = "Linear search checks each element once, so the time grows linearly ⇒ O(n)."
+},
 
-# Gameplay Objectives
+Total: 15 questions. Difficulty ramps from O(1)/O(n) up to O(n log n) and advanced topics.
 
-- **Primary Objective #1**:
-  - Description: Identify Big-O complexity from a code snippet before time runs out.
-  - Alignment: Reinforces classification learning objective.
+### 9. Interaction Flow
 
-- **Primary Objective #2**:
-  - Description: Respond quickly to avoid avatar stress and bomb explosion.
-  - Alignment: Reinforces decision-making under pressure.
+1. **Press START** → Hide start screen, show HUD.  
+2. **New Question**  
+   - Close the chest  
+   - Reset timer to 20 s  
+3. **Player Answers**  
+   - **Correct**  
+     - Play “ding” SFX  
+     - Open chest sprite  
+     - Wait 1 s, then call next question (or next level)  
+   - **Wrong** or **Timeout**  
+     - Play “buzz” SFX  
+     - Display Failure Panel with explanation text  
+4. **RESTART** → Reload scene back to Start Screen  
+5. **After Level 3 Completed** → Show Victory Panel, play victory fanfare
 
-# Procedures/Actions
+---
 
-- Player reads an algorithm snippet
-- Selects one of three Big-O options via buttons
-- Timer counts down from 60 seconds
-- Avatar and bomb animate based on outcome
+### 10. Art & Audio Assets
 
-# Rules
+| Asset Type      | File Names                                          | Path                  |
+|-----------------|-----------------------------------------------------|-----------------------|
+| **Backgrounds** | `BG_Level1.png`, `BG_Level2.png`, `BG_Level3.png`    | `Assets/Sprites/`     |
+| **Chests**      | `chest_closed.png`, `chest_open.png`                | `Assets/Sprites/`     |
+| **Panels**      | `Start_BG.png`, `Fail_BG.png`, `Victory_BG.png`      | `Assets/Sprites/`     |
+| **Music (BGM)** | `bgm_loop.mp3`                                      | `Assets/Audio/`       |
+| **SFX**         | `sfx_click.wav`, `sfx_correct.wav`,<br>`sfx_wrong.wav`, `sfx_victory.wav` | `Assets/Audio/` |
 
-- One minute per round
-- One correct answer per question
-- Game ends if timer hits zero (bomb explodes)
+---
 
-# Objects/Entities
+### 11. Future Extensions
 
-- Algorithm snippet display
-- Three Big-O choice buttons
-- Animated avatar (happy, neutral, worried, shocked)
-- Bomb (idle, shaking, explosion)
-- Timer bar
-
-## Core Gameplay Mechanics (Detailed)
-
-- **Timed Algorithm Challenges**: Players must analyze code and respond quickly. The countdown timer, accompanied by a shaking bomb, drives urgency. Picking the correct option resets the timer; incorrect choices waste time.
-
-- **Avatar Reactions**: An expressive avatar provides emotional feedback. It cheers, sighs, or panics depending on the player's decision. These animations increase emotional engagement.
-
-- **Exploding Bomb**: The bomb shakes more violently as time runs out. If it explodes, it triggers an end-of-level animation and abrupt music cut-off, emphasizing the cost of indecision.
-
-## Feedback
-
-- **Visual**: Flash colors (green = correct, red = wrong), avatar animations, bomb pulsing
-- **Audio**: Countdown tick, success/failure sound effects, explosion
-- **Long-Term**: Post-game stats screen with accuracy and reaction times per round
-
-# Story and Gameplay
-
-## Presentation of Rules
-
-Rules are introduced via interactive onboarding. The first level is a tutorial that gradually layers mechanics: selecting answers, observing avatar feedback, managing time.
-
-## Presentation of Content
-
-Each algorithm snippet is introduced with subtle hints or familiar code patterns. Players practice and reinforce recognition without lengthy explanations.
-
-## Story (Brief)
-
-You are a digital rogue hacker breaking into data vaults. Your digital avatar must make quick decisions to defuse algorithmic locks. One wrong move—or taking too long—and everything explodes.
-
-## Storyboarding
-![GameDesign](../Assets/GameDesign.png)
-
-
-![StoryBoarding](../Assets/StoryBoarding.jpg)
-
-
-# Assets Needed
-
-## Aesthetics
-
-A dark neon cyberpunk vibe. Tension-driven environment with glowing UI, high-tech overlays, and digital effects. The goal is to combine the look of a hacking mini-game with colorful emotional animation.
-
-## Graphical
-
-- **Characters**
-  - Hacker Avatar: Animated with idle, happy, worried, and shocked states
-- **Textures**
-  - Bomb with glow, pulse, and explosion animation
-  - UI buttons with hover/selected states
-  - Terminal with floating algorithm snippets
-
-## Audio
-
-- **Music List (Ambient Sound)**
-  - Tutorial / Start: Calm, synth-driven loop
-  - Mid-game: Tension-building pulse
-  - Final 10 seconds: Crescendo and ticking intensify
-
-- **Sound List (SFX)**
-  - Selecting answer: Soft click / chime
-  - Correct: Celebration ding
-  - Wrong: Error buzz
-  - Timer ticking: Clock sound
-  - Bomb explosion: Loud blast
-  - Avatar reactions: Cheer, sigh, gasp
+- **Practice Mode**  
+  - Unlimited time per question  
+  - No failure overlays  
+- **Leaderboard**  
+  - Track and display top players by accuracy & speed  
+- **Multiplayer Race**  
+  - Real‑time head‑to‑head Big‑O challenges  
+- **Mobile Support**  
+  - Touch‑friendly UI & responsive layout  
