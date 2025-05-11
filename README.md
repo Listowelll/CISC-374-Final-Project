@@ -7,9 +7,8 @@
 ---
 
 ## **Developers**
-
-* Listowel Anim ([animlist@udel.edu](mailto:animlist@udel.edu))
 * Zhihua Sun ([sunzhi@udel.edu](mailto:sunzhi@udel.edu))
+* Listowel Anim ([animlist@udel.edu](mailto:animlist@udel.edu))
 * Angel Asobo ([aasobo@udel.edu](mailto:aasobo@udel.edu))
 * Junpuyin Wei ()
 
