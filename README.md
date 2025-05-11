@@ -80,4 +80,4 @@ Find the full EGDD here: [docs/egdd.md](docs/egdd.md)
 ## **Links**
 
 * **Deployed Game**: [[(https://listowelll.github.io/CISC-374-Final-Project/)](https://listowelll.github.io/CISC-374-Final-Project/)]
-* **Final Presentation**: [)
+* **Final Presentation**: https://docs.google.com/presentation/d/12f8aQWilpJdbrv0TcZccGoc4m7BMn0g_/edit?usp=sharing&ouid=100617265692377582622&rtpof=true&sd=true
