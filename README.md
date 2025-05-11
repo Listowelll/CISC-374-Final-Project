@@ -58,7 +58,7 @@ Pass Answers 13132, 12114, 22131
 
 ## **Gameplay Trailer**
 
-<iframe "https://drive.google.com/file/d/10d73yOShV2QryUeHJ8qlrBjAQ4VFyy9_/preview"></iframe>
+"https://drive.google.com/file/d/10d73yOShV2QryUeHJ8qlrBjAQ4VFyy9_/preview"
 
 ---
 
